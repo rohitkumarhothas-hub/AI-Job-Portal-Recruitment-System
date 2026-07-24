@@ -1,97 +1,56 @@
-AI-Powered Job Portal and Recruitment Management System
+# AI-Powered Job Portal and Recruitment Management System
 
-Project Overview
+## Description
 
-AI-Powered Job Portal and Recruitment Management System is a full-stack web application designed to simplify the hiring process by connecting candidates and recruiters on a single platform.
+The **AI-Powered Job Portal and Recruitment Management System** is a full-stack web application designed to make the recruitment process easier, faster, and more efficient for both candidates and recruiters.
 
-The system allows candidates to create accounts, upload resumes, analyze their skills, find suitable job opportunities, and track applications. Recruiters can create job postings, manage candidates, and review applications efficiently.
+The platform allows candidates to register, upload resumes, analyze their skills, search for jobs, and apply for suitable opportunities. Recruiters can create job postings, manage applications, and find the right candidates through an organized recruitment process.
 
-The project combines modern web technologies with AI-based resume analysis features to make the recruitment process faster, smarter, and more organized.
+The system uses AI-based resume analysis to evaluate resumes, extract important skills, generate ATS scores, and improve candidate-job matching.
 
-Key Features
+## Features
 
-Candidate Module
+**Candidate Module**
+- Candidate registration and login
+- Email OTP verification
+- Profile management
+- Resume upload and management
+- AI resume analysis
+- ATS score evaluation
+- Skill extraction from resumes
+- Job search and job matching
+- Application tracking
 
-* User registration and secure login authentication
-* Email OTP verification system
-* Candidate profile management
-* Resume upload and resume management
-* AI-based resume analysis
-* ATS score calculation and resume improvement suggestions
-* Skill extraction from resumes
-* Job search and job matching based on skills
-* Application tracking system
+**Recruiter Module**
+- Recruiter registration and login
+- Create and manage job posts
+- View candidate applications
+- Review candidate resumes
+- Manage recruitment activities
 
-Recruiter Module
+**AI Features**
+- Resume analysis using AI
+- Automatic skill extraction
+- ATS score generation
+- Resume improvement suggestions
+- Candidate and job matching
 
-* Recruiter registration and authentication
-* Create and manage job postings
-* View candidate applications
-* Manage recruitment activities
-* Review candidate resumes
+**Technology Stack**
 
-AI Features
+- Frontend: React.js, JavaScript, CSS, Vite
+- Backend: Python, FastAPI
+- Database: SQLite, SQLAlchemy
+- Authentication: JWT Authentication
+- AI Processing: Resume Parsing and NLP
+- Tools: Git, GitHub, VS Code
 
-* Resume content analysis
-* Skill identification from uploaded resumes
-* Resume ATS compatibility scoring
-* AI-based job and candidate matching
+## Project Objective
 
-Backend Features
+The main objective of this project is to build an intelligent recruitment platform that reduces manual resume screening and helps recruiters identify suitable candidates while providing candidates with better job opportunities.
 
-* REST API architecture using FastAPI
-* JWT-based authentication
-* Database integration using SQLAlchemy
-* CRUD operations for users, jobs, resumes, and applications
-* Email service integration for OTP verification
+## Future Scope
 
-Frontend Features
-
-* Responsive user interface
-* React-based component architecture
-* Protected routes for authenticated users
-* Candidate and recruiter dashboards
-
-Technology Stack
-
-Frontend:
-
-* React.js
-* JavaScript
-* CSS
-* Vite
-
-Backend:
-
-* Python
-* FastAPI
-* SQLAlchemy
-* JWT Authentication
-
-Database:
-
-* SQLite
-
-AI and Processing:
-
-* Python AI libraries
-* Resume parsing
-* Natural language processing techniques
-
-Tools:
-
-* Git and GitHub
-* VS Code
-* REST APIs
-
-Project Objective
-
-The main objective of this project is to develop an intelligent recruitment platform that reduces manual resume screening efforts and helps recruiters identify suitable candidates efficiently while providing candidates with better job opportunities.
-
-Future Enhancements
-
-* Integration with cloud storage for resume management
-* Advanced AI interview preparation features
-* Real-time notifications
-* Machine learning based recommendation system
-* Deployment using cloud platforms
+- Cloud deployment
+- Advanced AI interview assistance
+- Real-time notifications
+- Improved recommendation system
