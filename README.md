@@ -54,3 +54,44 @@ The main objective of this project is to build an intelligent recruitment platfo
 - Advanced AI interview assistance
 - Real-time notifications
 - Improved recommendation system
+
+## How to Run the Project
+
+### Backend Setup
+
+1. Navigate to the backend folder:
+
+```bash
+cd backend
+2. Create and activate virtual environment:
+python -m venv venv
+Activate virtual environment:
+Mac/Linux:
+source venv/bin/activate
+Windows:
+venv\Scripts\activate
+3. Install backend dependencies:
+pip install -r requirements.txt
+4. Start the FastAPI server:
+uvicorn main:app --reload
+Backend will run at:
+http://127.0.0.1:8000
+
+Frontend Setup
+
+1. Open a new terminal and navigate to the frontend folder:
+cd frontend
+2. Install frontend dependencies:
+npm install
+3. Start the React application:
+npm run dev
+Frontend will run at:
+http://localhost:5174
+Application Flow
+
+1. User creates an account through registration.
+2. Email OTP verification is completed.
+3. User logs in securely.
+4. Candidates can upload resumes and get AI-based resume analysis.
+5. Recruiters can create job postings and manage applications.
+6. AI features help with resume evaluation and candidate-job matching.
