@@ -1,0 +1,23 @@
+# Python
+backend/venv/
+__pycache__/
+*.pyc
+
+# Database
+*.db
+
+# Environment variables
+.env
+
+# Node
+frontend/node_mo
+dules/
+frontend/dist/
+#Uploads
+backend/uploads/
+# Logs
+*.log
+
+# OS files
+.DS_Store
+
