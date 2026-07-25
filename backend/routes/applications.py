@@ -20,7 +20,6 @@ router = APIRouter(
 )
 
 
-
 # ---------------------------------
 # Candidate Apply Job
 # ---------------------------------
@@ -45,10 +44,12 @@ def apply_job(
         )
 
 
+
     resume = db.query(Resume).filter(
         Resume.id == resume_id,
         Resume.user_id == current_user["user_id"]
     ).first()
+
 
 
     if not resume:
@@ -58,16 +59,104 @@ def apply_job(
         )
 
 
+
     existing = db.query(Application).filter(
         Application.candidate_id == current_user["user_id"],
         Application.job_id == job_id
     ).first()
 
 
+
     if existing:
         return {
-            "message":"Already applied for this job"
+            "message":"Already applied for this job",
+            "match_score": existing.match_score
         }
+
+
+
+    # -----------------------------
+    # Calculate AI Match Score
+    # -----------------------------
+
+    resume_skills = []
+
+
+    if resume.skills:
+
+        skills_text = str(resume.skills)
+
+        skills_text = (
+            skills_text
+            .replace("[", "")
+            .replace("]", "")
+            .replace('"', "")
+            .replace("'", "")
+        )
+
+
+        resume_skills = [
+
+            skill.strip().lower()
+
+            for skill in skills_text.split(",")
+
+            if skill.strip()
+
+        ]
+
+
+
+    required_skills = []
+
+
+    if job.required_skills:
+
+        skills_text = str(job.required_skills)
+
+        skills_text = (
+            skills_text
+            .replace("[", "")
+            .replace("]", "")
+            .replace('"', "")
+            .replace("'", "")
+        )
+
+
+        required_skills = [
+
+            skill.strip().lower()
+
+            for skill in skills_text.split(",")
+
+            if skill.strip()
+
+        ]
+
+
+
+    matched_skills = []
+
+
+    for skill in required_skills:
+
+        if skill in resume_skills:
+
+            matched_skills.append(skill)
+
+
+
+    match_score = 0
+
+
+    if required_skills:
+
+        match_score = round(
+
+            (len(matched_skills) / len(required_skills)) * 100
+
+        )
+
 
 
 
@@ -81,9 +170,10 @@ def apply_job(
 
         status="Applied",
 
-        match_score=0
+        match_score=match_score
 
     )
+
 
 
     db.add(application)
@@ -98,7 +188,11 @@ def apply_job(
 
         "message":"Job applied successfully",
 
-        "application_id":application.id
+        "application_id":application.id,
+
+        "match_score":match_score,
+
+        "matched_skills":matched_skills
 
     }
 
@@ -353,10 +447,7 @@ def view_resume(
     }
 
 
-
-
-
-# ---------------------------------
+ # ---------------------------------
 # Recruiter View Original PDF Resume
 # ---------------------------------
 
@@ -365,9 +456,7 @@ def view_resume_file(
 
     resume_id:int,
 
-    db:Session = Depends(get_db),
-
-    current_user = Depends(require_recruiter)
+    db:Session = Depends(get_db)
 
 ):
 
