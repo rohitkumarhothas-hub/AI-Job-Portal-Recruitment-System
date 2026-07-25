@@ -27,7 +27,6 @@ router = APIRouter(
 @router.post("/apply/{job_id}")
 def apply_job(
     job_id: int,
-    resume_id: int,
     db: Session = Depends(get_db),
     current_user = Depends(require_candidate)
 ):
@@ -45,32 +44,52 @@ def apply_job(
 
 
 
+    # Automatically select candidate latest resume
+
     resume = db.query(Resume).filter(
-        Resume.id == resume_id,
+
         Resume.user_id == current_user["user_id"]
+
+    ).order_by(
+
+        Resume.id.desc()
+
     ).first()
 
 
 
     if not resume:
+
         raise HTTPException(
+
             status_code=404,
-            detail="Resume not found"
+
+            detail="Please upload resume before applying"
+
         )
 
 
 
     existing = db.query(Application).filter(
+
         Application.candidate_id == current_user["user_id"],
+
         Application.job_id == job_id
+
     ).first()
 
 
 
     if existing:
+
         return {
+
             "message":"Already applied for this job",
+
+            "status":"Applied",
+
             "match_score": existing.match_score
+
         }
 
 
@@ -166,7 +185,7 @@ def apply_job(
 
         job_id=job_id,
 
-        resume_id=resume_id,
+        resume_id=resume.id,
 
         status="Applied",
 
