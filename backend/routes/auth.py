@@ -91,8 +91,6 @@ def register_user(
 ):
 
 
-    # Check Gmail format
-
     if not validate_email(user.email):
 
         raise HTTPException(
@@ -113,7 +111,67 @@ def register_user(
 
 
 
+    # Existing user handling
+
     if existing_user:
+
+
+        # User registered but OTP not verified
+
+        if existing_user.is_verified == 0:
+
+
+            otp = generate_otp()
+
+
+            existing_user.email_otp = otp
+
+            existing_user.otp_expiry = datetime.utcnow() + timedelta(minutes=5)
+
+
+            db.commit()
+
+
+
+            print(
+                "Resending OTP to:",
+                existing_user.email
+            )
+
+
+
+            send_email(
+
+                existing_user.email,
+
+                "AI Resume Analyzer - OTP Verification",
+
+f"""
+Hello {existing_user.name},
+
+Your verification OTP is:
+
+{otp}
+
+This OTP is valid for 5 minutes.
+
+Regards,
+AI Resume Analyzer Team
+"""
+
+            )
+
+
+
+            return {
+
+                "message":"OTP resent to your email",
+
+                "email":existing_user.email
+
+            }
+
+
 
         raise HTTPException(
 
@@ -148,6 +206,7 @@ def register_user(
     )
 
 
+
     db.add(new_user)
 
     db.commit()
@@ -156,7 +215,10 @@ def register_user(
 
 
 
-    print("OTP sending to:", new_user.email)
+    print(
+        "OTP sending to:",
+        new_user.email
+    )
 
 
 
@@ -189,6 +251,7 @@ AI Resume Analyzer Team
         "email":new_user.email
 
     }
+
 
 
 
@@ -253,11 +316,11 @@ def verify_otp(
 
 
 
-    user.is_verified=1
+    user.is_verified = 1
 
-    user.email_otp=None
+    user.email_otp = None
 
-    user.otp_expiry=None
+    user.otp_expiry = None
 
 
     db.commit()
@@ -310,9 +373,9 @@ def resend_otp(
     otp=generate_otp()
 
 
-    user.email_otp=otp
+    user.email_otp = otp
 
-    user.otp_expiry=datetime.utcnow()+timedelta(minutes=5)
+    user.otp_expiry = datetime.utcnow()+timedelta(minutes=5)
 
 
     db.commit()
@@ -346,6 +409,7 @@ AI Resume Analyzer Team
         "message":"New OTP sent"
 
     }
+
 
 
 
@@ -396,7 +460,7 @@ def login_user(
 
 
 
-    if user.is_verified==0:
+    if user.is_verified == 0:
 
         raise HTTPException(
 
