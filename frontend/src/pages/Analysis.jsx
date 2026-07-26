@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import api from "../services/api";
 
 
@@ -7,7 +7,10 @@ function Analysis() {
 
   const { id } = useParams();
 
+  const navigate = useNavigate();
+
   const [resume, setResume] = useState(null);
+
 
 
   useEffect(() => {
@@ -80,6 +83,39 @@ function Analysis() {
       }}
 
     >
+
+
+      {/* BACK BUTTON */}
+
+      <button
+
+        onClick={() => navigate("/dashboard")}
+
+        style={{
+
+          padding:"10px 20px",
+
+          background:"#007bff",
+
+          color:"white",
+
+          border:"none",
+
+          borderRadius:"8px",
+
+          cursor:"pointer",
+
+          marginBottom:"20px"
+
+        }}
+
+      >
+
+        ← Back to Dashboard
+
+      </button>
+
+
 
 
       <h1>
@@ -165,6 +201,7 @@ function Analysis() {
 
 
         {
+
           (resume.skills || []).map(
 
             (skill,index)=>(
@@ -238,6 +275,7 @@ function Analysis() {
 
 
         {
+
           (resume.missing_skills || []).length === 0 ?
 
 

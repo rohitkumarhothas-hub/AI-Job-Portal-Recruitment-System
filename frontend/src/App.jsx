@@ -21,6 +21,8 @@ import RecruiterDashboard from "./pages/RecruiterDashboard";
 
 import CreateJob from "./pages/CreateJob";
 
+import RecruiterViewResume from "./pages/RecruiterViewResume";
+
 
 import ProtectedRoute from "./components/ProtectedRoute";
 
@@ -231,6 +233,26 @@ function App() {
             <ProtectedRoute allowedRole="recruiter">
 
               <CreateJob />
+
+            </ProtectedRoute>
+
+          }
+
+        />
+
+
+
+
+
+        <Route
+
+          path="/recruiter/resume/:resumeId"
+
+          element={
+
+            <ProtectedRoute allowedRole="recruiter">
+
+              <RecruiterViewResume />
 
             </ProtectedRoute>
 

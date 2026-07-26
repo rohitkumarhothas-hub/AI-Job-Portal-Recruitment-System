@@ -2,16 +2,23 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../services/api";
 
+
 function RecruiterDashboard() {
+
 
   const [applications, setApplications] = useState([]);
 
   const navigate = useNavigate();
 
 
+
   useEffect(() => {
+
     fetchApplications();
+
   }, []);
+
+
 
 
 
@@ -35,7 +42,7 @@ function RecruiterDashboard() {
       );
 
 
-    } catch (error) {
+    } catch(error) {
 
       console.log(error);
 
@@ -47,10 +54,12 @@ function RecruiterDashboard() {
 
 
 
+
   const updateStatus = async (
     applicationId,
     status
   ) => {
+
 
     try {
 
@@ -70,7 +79,9 @@ function RecruiterDashboard() {
       );
 
 
-      console.log(response.data);
+      console.log(
+        response.data
+      );
 
 
       alert(
@@ -82,15 +93,19 @@ function RecruiterDashboard() {
 
 
 
-    } catch(error){
+    } catch(error) {
+
 
       console.log(error);
+
 
       alert(
         "Status update failed"
       );
 
+
     }
+
 
   };
 
@@ -99,146 +114,44 @@ function RecruiterDashboard() {
 
 
 
-  const viewResume = async (resumeId) => {
+  // Open original uploaded PDF resume
+
+  const viewResume = (resumeId) => {
 
 
     if(!resumeId){
+
 
       alert(
         "Resume not available"
       );
 
+
       return;
 
-    }
-
-
-
-    try{
-
-
-      const response = await api.get(
-
-        `/applications/resume/${resumeId}`
-
-      );
-
-
-
-      const resume = response.data;
-
-
-
-      const newWindow = window.open(
-        "",
-        "_blank"
-      );
-
-
-
-      newWindow.document.write(`
-
-        <html>
-
-        <head>
-
-        <title>Candidate Resume</title>
-
-        </head>
-
-
-        <body style="font-family:Arial;padding:30px">
-
-
-        <h1>
-        Candidate Resume
-        </h1>
-
-
-        <h3>
-        File: ${resume.filename}
-        </h3>
-
-
-        <h3>
-        ATS Score: ${resume.ats_score}%
-        </h3>
-
-
-
-        <h3>
-        Skills
-        </h3>
-
-        <p>
-        ${resume.skills}
-        </p>
-
-
-
-        <h3>
-        Missing Skills
-        </h3>
-
-        <p>
-        ${resume.missing_skills}
-        </p>
-
-
-
-        <h3>
-        AI Feedback
-        </h3>
-
-        <pre>
-        ${resume.ai_feedback}
-        </pre>
-
-
-
-        <h3>
-        Resume Text
-        </h3>
-
-        <p>
-        ${resume.resume_text}
-        </p>
-
-
-
-        </body>
-
-        </html>
-
-      `);
-
-
-
-      newWindow.document.close();
-
-
 
     }
-    catch(error){
 
 
-      console.log(error);
 
+    window.open(
 
-      alert(
-        "Unable to open resume"
-      );
+      `${api.defaults.baseURL}/applications/resume-file/${resumeId}`,
 
-    }
+      "_blank"
+
+    );
 
 
   };
+
 
 
 
 
 
   return (
+
 
     <div
 
@@ -255,6 +168,7 @@ function RecruiterDashboard() {
     >
 
 
+
       <h1>
         Recruiter Dashboard
       </h1>
@@ -262,11 +176,27 @@ function RecruiterDashboard() {
 
 
 
-      <div
+
+      <button
+
+        onClick={() =>
+          navigate("/create-job")
+        }
+
 
         style={{
 
-          marginTop:"20px",
+          background:"#007bff",
+
+          color:"white",
+
+          padding:"12px 25px",
+
+          border:"none",
+
+          borderRadius:"5px",
+
+          cursor:"pointer",
 
           marginBottom:"30px"
 
@@ -274,44 +204,18 @@ function RecruiterDashboard() {
 
       >
 
+        + Create New Job
 
-        <button
-
-          onClick={() =>
-            navigate("/create-job")
-          }
+      </button>
 
 
-          style={{
-
-            background:"#007bff",
-
-            color:"white",
-
-            padding:"12px 25px",
-
-            border:"none",
-
-            borderRadius:"5px",
-
-            cursor:"pointer"
-
-          }}
-
-        >
-
-          + Create New Job
-
-        </button>
-
-
-      </div>
 
 
 
 
 
       {
+
         applications.length === 0
 
         ?
@@ -327,176 +231,195 @@ function RecruiterDashboard() {
 
         :
 
+
         applications.map((app)=>(
 
 
           <div
 
-          key={app.application_id}
+            key={app.application_id}
 
 
-          style={{
+            style={{
 
-            background:"white",
+              background:"white",
 
-            padding:"25px",
+              padding:"25px",
 
-            marginTop:"20px",
+              marginTop:"20px",
 
-            borderRadius:"10px",
+              borderRadius:"10px",
 
-            boxShadow:"0 0 10px rgba(0,0,0,0.1)"
+              boxShadow:"0 0 10px rgba(0,0,0,0.1)"
 
-          }}
-
-          >
-
-
-
-          <h2>
-            {app.candidate_name}
-          </h2>
-
-
-
-          <p>
-            Email: {app.candidate_email}
-          </p>
-
-
-
-          <h3>
-            Applied For: {app.job_title}
-          </h3>
-
-
-
-          <p>
-            Resume: {app.resume_name}
-          </p>
-
-
-
-
-          <h2>
-            AI Match Score: {app.match_score}%
-          </h2>
-
-
-
-          <p>
-            Status:
-            <b> {app.status}</b>
-          </p>
-
-
-
-
-
-          <button
-
-          onClick={() =>
-            viewResume(app.resume_id)
-          }
-
-
-          style={{
-
-            background:"#007bff",
-
-            color:"white",
-
-            padding:"10px 20px",
-
-            border:"none",
-
-            marginRight:"10px",
-
-            cursor:"pointer",
-
-            borderRadius:"5px"
-
-          }}
+            }}
 
           >
 
-          View Resume
-
-          </button>
 
 
 
-
-
-          <button
-
-          onClick={() =>
-            updateStatus(
-              app.application_id,
-              "Shortlisted"
-            )
-          }
-
-
-          style={{
-
-            background:"green",
-
-            color:"white",
-
-            padding:"10px 20px",
-
-            border:"none",
-
-            marginRight:"10px",
-
-            cursor:"pointer",
-
-            borderRadius:"5px"
-
-          }}
-
-          >
-
-          Shortlist
-
-          </button>
+            <h2>
+              {app.candidate_name}
+            </h2>
 
 
 
 
-
-          <button
-
-          onClick={() =>
-            updateStatus(
-              app.application_id,
-              "Rejected"
-            )
-          }
+            <p>
+              Email: {app.candidate_email}
+            </p>
 
 
-          style={{
 
-            background:"red",
 
-            color:"white",
+            <h3>
+              Applied For: {app.job_title}
+            </h3>
 
-            padding:"10px 20px",
 
-            border:"none",
 
-            cursor:"pointer",
 
-            borderRadius:"5px"
+            <p>
+              Resume: {app.resume_name}
+            </p>
 
-          }}
 
-          >
 
-          Reject
 
-          </button>
+            <h2>
+              AI Match Score: {app.match_score}%
+            </h2>
+
+
+
+
+            <p>
+
+              Status:
+
+              <b>
+                {" "}{app.status}
+              </b>
+
+            </p>
+
+
+
+
+
+
+
+            <button
+
+              onClick={() =>
+                viewResume(app.resume_id)
+              }
+
+
+              style={{
+
+                background:"#007bff",
+
+                color:"white",
+
+                padding:"10px 20px",
+
+                border:"none",
+
+                marginRight:"10px",
+
+                cursor:"pointer",
+
+                borderRadius:"5px"
+
+              }}
+
+            >
+
+              View Resume
+
+            </button>
+
+
+
+
+
+
+
+
+            <button
+
+              onClick={() =>
+                updateStatus(
+                  app.application_id,
+                  "Shortlisted"
+                )
+              }
+
+
+              style={{
+
+                background:"green",
+
+                color:"white",
+
+                padding:"10px 20px",
+
+                border:"none",
+
+                marginRight:"10px",
+
+                cursor:"pointer",
+
+                borderRadius:"5px"
+
+              }}
+
+            >
+
+              Shortlist
+
+            </button>
+
+
+
+
+
+
+
+
+            <button
+
+              onClick={() =>
+                updateStatus(
+                  app.application_id,
+                  "Rejected"
+                )
+              }
+
+
+              style={{
+
+                background:"red",
+
+                color:"white",
+
+                padding:"10px 20px",
+
+                border:"none",
+
+                cursor:"pointer",
+
+                borderRadius:"5px"
+
+              }}
+
+            >
+
+              Reject
+
+            </button>
 
 
 
@@ -510,9 +433,12 @@ function RecruiterDashboard() {
 
 
 
+
     </div>
 
+
   );
+
 
 }
 
