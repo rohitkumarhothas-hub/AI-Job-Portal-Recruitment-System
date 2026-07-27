@@ -2,86 +2,65 @@ from dotenv import load_dotenv
 load_dotenv()
 
 import os
-import smtplib
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
+import sib_api_v3_sdk
+from sib_api_v3_sdk.rest import ApiException
 
-print("🔥 BREVO SMTP EMAIL SERVICE LOADED")
+print("🔥 BREVO API EMAIL SERVICE LOADED")
 
 
-def send_email(
-    receiver_email,
-    subject,
-    body
-):
+def send_email(receiver_email, subject, body):
+
     print("🚀 SEND_EMAIL FUNCTION CALLED")
 
     try:
 
-        smtp_server = os.getenv("SMTP_SERVER")
-        smtp_port = int(os.getenv("SMTP_PORT"))
-        smtp_login = os.getenv("SMTP_LOGIN")
-        smtp_password = os.getenv("SMTP_PASSWORD")
+        api_key = os.getenv("BREVO_API_KEY")
         sender_email = os.getenv("SENDER_EMAIL")
+        sender_name = os.getenv("SENDER_NAME", "AI Resume Analyzer")
 
-
-        print("SMTP SERVER:", smtp_server)
-        print("SMTP LOGIN:", smtp_login)
+        print("API KEY FOUND:", bool(api_key))
         print("SENDER EMAIL:", sender_email)
         print("RECEIVER EMAIL:", receiver_email)
 
+        configuration = sib_api_v3_sdk.Configuration()
+        configuration.api_key["api-key"] = api_key
 
-        message = MIMEMultipart()
+        api_client = sib_api_v3_sdk.ApiClient(configuration)
+        api_instance = sib_api_v3_sdk.TransactionalEmailsApi(api_client)
 
-        message["From"] = sender_email
-        message["To"] = receiver_email
-        message["Subject"] = subject
-
-
-        message.attach(
-            MIMEText(body, "html")
+        email = sib_api_v3_sdk.SendSmtpEmail(
+            sender={
+                "name": sender_name,
+                "email": sender_email
+            },
+            to=[
+                {
+                    "email": receiver_email
+                }
+            ],
+            subject=subject,
+            html_content=body
         )
 
+        response = api_instance.send_transac_email(email)
 
-        server = smtplib.SMTP(
-            smtp_server,
-            smtp_port
-        )
-
-
-        server.starttls()
-
-
-        server.login(
-            smtp_login,
-            smtp_password
-        )
-
-
-        server.sendmail(
-            sender_email,
-            receiver_email,
-            message.as_string()
-        )
-
-
-        server.quit()
-
-
-        print(
-            "✅ Email sent successfully to:",
-            receiver_email
-        )
-
+        print("✅ BREVO RESPONSE:", response)
+        print("✅ Email sent successfully to:", receiver_email)
 
         return True
 
+    except ApiException as e:
+
+        print("❌ BREVO API ERROR")
+        print("Status:", e.status)
+        print("Reason:", e.reason)
+        print("Headers:", e.headers)
+        print("Body:", e.body)
+
+        return False
 
     except Exception as e:
 
-        print(
-            "❌ EMAIL ERROR:",
-            repr(e)
-        )
+        print("❌ EMAIL ERROR:", repr(e))
 
         return False

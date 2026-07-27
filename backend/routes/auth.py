@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, BackgroundTasks
 from sqlalchemy.orm import Session
 from fastapi.security import OAuth2PasswordRequestForm
 from jose import jwt
@@ -86,6 +86,8 @@ def register_user(
 
     user: UserCreate,
 
+    background_tasks: BackgroundTasks,
+
     db: Session = Depends(get_db)
 
 ):
@@ -116,8 +118,6 @@ def register_user(
     if existing_user:
 
 
-        # User registered but OTP not verified
-
         if existing_user.is_verified == 0:
 
 
@@ -139,8 +139,9 @@ def register_user(
             )
 
 
+            background_tasks.add_task(
 
-            send_email(
+                send_email,
 
                 existing_user.email,
 
@@ -222,7 +223,9 @@ AI Resume Analyzer Team
 
 
 
-    send_email(
+    background_tasks.add_task(
+
+        send_email,
 
         new_user.email,
 
@@ -315,7 +318,6 @@ def verify_otp(
         )
 
 
-
     user.is_verified = 1
 
     user.email_otp = None
@@ -345,6 +347,8 @@ def verify_otp(
 def resend_otp(
 
     email:str,
+
+    background_tasks: BackgroundTasks,
 
     db:Session=Depends(get_db)
 
@@ -382,7 +386,9 @@ def resend_otp(
 
 
 
-    send_email(
+    background_tasks.add_task(
+
+        send_email,
 
         user.email,
 

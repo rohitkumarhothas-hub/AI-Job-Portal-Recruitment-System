@@ -9,3 +9,4 @@ python-jose
 PyPDF2
 python-dotenv
 google-genai
+sib-api-v3-sdk
