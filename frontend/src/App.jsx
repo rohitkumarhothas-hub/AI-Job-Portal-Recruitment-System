@@ -1,20 +1,20 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import VerifyOTP from "./pages/VerifyOTP";
+import Login from "./pages/login";
+import Register from "./pages/register";
+import VerifyOTP from "./pages/VerifyOtp";
 
 
-import Dashboard from "./pages/Dashboard";
+import Dashboard from "./pages/dashboard";
 
 import UploadResume from "./pages/UploadResume";
 
 import Analysis from "./pages/Analysis";
 
-import JobMatch from "./pages/JobMatch";
+import JobMatch from "./pages/jobmatch";
 
-import Jobs from "./pages/Jobs";
+import Jobs from "./pages/jobs";
 
 
 import RecruiterDashboard from "./pages/RecruiterDashboard";
