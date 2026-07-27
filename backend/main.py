@@ -44,7 +44,9 @@ app.add_middleware(
 
         "http://localhost:5173",
 
-        "http://localhost:5174"
+        "http://localhost:5174",
+
+        "https://ai-job-portal-recruitment-system-1.onrender.com"
 
     ],
 
