@@ -154,7 +154,7 @@ AI_Resume_Analyzer/
 - Render Continuous Deployment (CD)
 
 ---
-## 🐳 Docker Setup
+## Docker Setup
 
 The application is containerized using Docker with separate containers for the frontend and backend services. Docker Compose is used to manage and run the complete full-stack application environment.
 
@@ -183,7 +183,7 @@ docker-compose down
 | Backend | FastAPI | REST API and AI processing services |
 | Database | SQLite | Application data storage |
 
-## 🔄 CI/CD Pipeline
+## CI/CD Pipeline
 
 Implemented GitHub Actions for Continuous Integration.
 
