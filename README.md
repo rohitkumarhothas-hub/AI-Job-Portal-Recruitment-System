@@ -1,84 +1,98 @@
-AI Resume Analyzer & Role-Based Job Recruitment Platform
+# **AI Resume Analyzer & Role-Based Job Recruitment Platform**
 
-Overview
+## **Overview**
 
 A full-stack recruitment platform that simplifies the hiring process through AI-powered resume analysis and role-based access for Candidates and Recruiters. The platform enables candidates to upload resumes, receive ATS scores, and apply for jobs, while recruiters can create job postings, review applications, and manage the recruitment process efficiently.
 
-Key Features
+---
 
-* AI-powered resume analysis using Google Gemini AI
-* ATS score generation and resume evaluation
-* Role-based Candidate and Recruiter portals
-* Resume upload and parsing
-* Job posting and application management
-* Recruiter application review and candidate shortlisting
-* Secure JWT authentication
-* Email OTP verification using Brevo
-* Protected routes based on user roles
+## **Key Features**
 
-Technology Stack
+- AI-powered resume analysis using Google Gemini AI
+- ATS score generation and resume evaluation
+- Role-based Candidate and Recruiter portals
+- Resume upload and parsing
+- Job posting and application management
+- Recruiter application review and candidate shortlisting
+- Secure JWT authentication
+- Email OTP verification using Brevo
+- Protected routes based on user roles
 
-Frontend
+---
 
-* React.js
-* React Router
-* Axios
-* HTML5
-* CSS3
+## **Technology Stack**
 
-Backend
+### **Frontend**
 
-* FastAPI
-* Python
-* SQLAlchemy
-* SQLite
-* JWT Authentication
+- React.js
+- React Router
+- Axios
+- HTML5
+- CSS3
 
-AI Integration
+### **Backend**
 
-* Google Gemini AI
-* Resume Parsing
-* ATS Scoring
+- FastAPI
+- Python
+- SQLAlchemy
+- SQLite
+- JWT Authentication
 
-DevOps
+### **AI Integration**
 
-* Docker
-* Docker Compose
-* GitHub Actions (CI)
-* Render Continuous Deployment (CD)
+- Google Gemini AI
+- Resume Parsing
+- ATS Scoring
 
-Docker
+### **DevOps**
+
+- Docker
+- Docker Compose
+- GitHub Actions (CI)
+- Render Continuous Deployment (CD)
+
+---
+
+## **Docker**
 
 The application is fully containerized using Docker with separate Docker images for the frontend and backend. Docker Compose is used to orchestrate both services, enabling a consistent development environment and simplified deployment.
 
-CI/CD Pipeline
+---
 
-A GitHub Actions workflow automates the Continuous Integration process by installing dependencies, validating the React application build, and building Docker images for both frontend and backend. After successful validation, Render automatically deploys the latest version from the main branch, providing a complete Continuous Deployment pipeline.
+## **CI/CD Pipeline**
 
-Authentication & Security
+A GitHub Actions workflow automates the Continuous Integration process by installing dependencies, validating the React application build, and building Docker images for both frontend and backend. After successful validation, Render automatically deploys the latest version from the **main** branch, providing a complete Continuous Deployment pipeline.
 
-* JWT-based Authentication
-* Role-Based Access Control
-* Protected Routes
-* Email OTP Verification
+---
 
-Project Architecture
+## **Authentication & Security**
 
-* Candidate Portal
-* Recruiter Portal
-* React Frontend
-* FastAPI REST API
-* SQLite Database
-* Google Gemini AI Integration
-* Brevo Email Service
+- JWT-based Authentication
+- Role-Based Access Control (RBAC)
+- Protected Routes
+- Email OTP Verification
 
-Future Enhancements
+---
 
-* Interview Scheduling
-* Resume Recommendation Engine
-* Real-time Notifications
-* Recruiter Analytics Dashboard
-* Cloud Database Integration
+## **Project Architecture**
+
+- Candidate Portal
+- Recruiter Portal
+- React Frontend
+- FastAPI REST API
+- SQLite Database
+- Google Gemini AI Integration
+- Brevo Email Service
+
+---
+
+## **Future Enhancements**
+
+- Interview Scheduling
+- Resume Recommendation Engine
+- Real-time Notifications
+- Recruiter Analytics Dashboard
+- Cloud Database Integration
 
 ## How to Run the Project
 
