@@ -47,6 +47,82 @@ A full-stack recruitment platform that simplifies the hiring process through AI-
 ### Recruiter Dashboard
 ![Recruiter Dashboard](recruiter-dashboard.png)
 
+## 📂 Project Structure
+AI_Resume_Analyzer/
+│
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   │   └── ProtectedRoute.jsx
+│   │   │
+│   │   ├── pages/
+│   │   │   ├── login.jsx
+│   │   │   ├── register.jsx
+│   │   │   ├── VerifyOtp.jsx
+│   │   │   ├── dashboard.jsx
+│   │   │   ├── UploadResume.jsx
+│   │   │   ├── Analysis.jsx
+│   │   │   ├── jobs.jsx
+│   │   │   ├── CreateJob.jsx
+│   │   │   ├── RecruiterDashboard.jsx
+│   │   │   ├── RecruiterViewResume.jsx
+│   │   │   └── jobmatch.jsx
+│   │   │
+│   │   ├── services/
+│   │   │   └── api.js
+│   │   │
+│   │   ├── App.jsx
+│   │   ├── App.css
+│   │   ├── main.jsx
+│   │   └── index.css
+│   │
+│   ├── Dockerfile
+│   ├── package.json
+│   ├── vite.config.js
+│   └── index.html
+│
+├── backend/
+│   ├── routes/
+│   │   ├── auth.py
+│   │   ├── resume.py
+│   │   ├── analysis.py
+│   │   ├── users.py
+│   │   ├── jobs.py
+│   │   └── applications.py
+│   │
+│   ├── utils/
+│   │   ├── gemini_ai.py
+│   │   ├── email_service.py
+│   │   ├── resume_parser.py
+│   │   ├── ats_score.py
+│   │   ├── job_matcher.py
+│   │   └── auth_utils.py
+│   │
+│   ├── main.py
+│   ├── models.py
+│   ├── schemas.py
+│   ├── database.py
+│   ├── ai_analysis.py
+│   ├── resume_parser.py
+│   ├── ats_score.py
+│   ├── requirements.txt
+│   └── Dockerfile
+│
+├── .github/
+│   └── workflows/
+│       └── ci.yml
+│
+├── docker-compose.yml
+│
+├── screenshots/
+│   ├── login.png
+│   ├── resume-upload.png
+│   ├── ats-score.png
+│   └── recruiter-dashboard.png
+│
+├── README.md
+└── .gitignore
+
 ## **Technology Stack**
 
 ### **Frontend**
@@ -91,6 +167,24 @@ The application is fully containerized using Docker with separate Docker images 
 A GitHub Actions workflow automates the Continuous Integration process by installing dependencies, validating the React application build, and building Docker images for both frontend and backend. After successful validation, Render automatically deploys the latest version from the **main** branch, providing a complete Continuous Deployment pipeline.
 
 ---
+##  Deployment
+
+The application is deployed using Render with separate frontend and backend services.
+
+### Backend Deployment
+- FastAPI backend deployed on Render
+- Connected with SQLite database
+- Environment variables configured securely
+
+### Frontend Deployment
+- React frontend deployed on Render
+- Configured with backend API URL
+- Automatic deployment triggered from the main branch
+
+### Live Application
+
+Application:
+https://ai-job-portal-recruitment-system-1.onrender.com
 
 ## **Authentication & Security**
 
