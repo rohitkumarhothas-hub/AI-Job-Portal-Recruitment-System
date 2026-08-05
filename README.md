@@ -36,7 +36,7 @@ A full-stack recruitment platform that simplifies the hiring process through AI-
 ## 📸 Screenshots
 
 ### Login Page
-![Login](screenshots/login.png)
+![Login](login.png)
 
 ### Candidate Dashboard
 ![Dashboard](screenshots/dashboard.png)
