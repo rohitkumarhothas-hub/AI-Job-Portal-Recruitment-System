@@ -1,4 +1,4 @@
-# AI-Powered Job Portal and Recruitment Management System
+AI Resume Analyzer & Role-Based Job Recruitment Platform
 
 ## Description
 
