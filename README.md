@@ -205,6 +205,43 @@ https://ai-job-portal-recruitment-system-1.onrender.com
 - Brevo Email Service
 
 ---
+## 🐳 Docker Setup
+
+The application is containerized using Docker with separate containers for the frontend and backend services. Docker Compose is used to manage and run the complete full-stack application environment.
+
+### Build and Run the Application
+
+```bash
+docker-compose up --build
+```
+
+This will start:
+
+- React.js frontend container
+- FastAPI backend container
+
+### Stop the Application
+
+```bash
+docker-compose down
+```
+
+### Docker Services
+
+| Service | Technology | Description |
+|---------|------------|-------------|
+| Frontend | React + Vite | User interface and client-side application |
+| Backend | FastAPI | REST API and AI processing services |
+| Database | SQLite | Application data storage |
+
+## 🔄 CI/CD Pipeline
+
+Implemented GitHub Actions for Continuous Integration.
+
+- Automatically validates code changes on every push.
+- Builds frontend and backend applications.
+- Builds Docker images for deployment.
+- Render automatically deploys the latest version from the main branch.
 
 ## **Future Enhancements**
 
