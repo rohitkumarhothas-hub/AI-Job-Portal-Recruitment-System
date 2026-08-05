@@ -1,59 +1,84 @@
 AI Resume Analyzer & Role-Based Job Recruitment Platform
 
-## Description
+Overview
 
-The **AI-Powered Job Portal and Recruitment Management System** is a full-stack web application designed to make the recruitment process easier, faster, and more efficient for both candidates and recruiters.
+A full-stack recruitment platform that simplifies the hiring process through AI-powered resume analysis and role-based access for Candidates and Recruiters. The platform enables candidates to upload resumes, receive ATS scores, and apply for jobs, while recruiters can create job postings, review applications, and manage the recruitment process efficiently.
 
-The platform allows candidates to register, upload resumes, analyze their skills, search for jobs, and apply for suitable opportunities. Recruiters can create job postings, manage applications, and find the right candidates through an organized recruitment process.
+Key Features
 
-The system uses AI-based resume analysis to evaluate resumes, extract important skills, generate ATS scores, and improve candidate-job matching.
+* AI-powered resume analysis using Google Gemini AI
+* ATS score generation and resume evaluation
+* Role-based Candidate and Recruiter portals
+* Resume upload and parsing
+* Job posting and application management
+* Recruiter application review and candidate shortlisting
+* Secure JWT authentication
+* Email OTP verification using Brevo
+* Protected routes based on user roles
 
-## Features
+Technology Stack
 
-**Candidate Module**
-- Candidate registration and login
-- Email OTP verification
-- Profile management
-- Resume upload and management
-- AI resume analysis
-- ATS score evaluation
-- Skill extraction from resumes
-- Job search and job matching
-- Application tracking
+Frontend
 
-**Recruiter Module**
-- Recruiter registration and login
-- Create and manage job posts
-- View candidate applications
-- Review candidate resumes
-- Manage recruitment activities
+* React.js
+* React Router
+* Axios
+* HTML5
+* CSS3
 
-**AI Features**
-- Resume analysis using AI
-- Automatic skill extraction
-- ATS score generation
-- Resume improvement suggestions
-- Candidate and job matching
+Backend
 
-**Technology Stack**
+* FastAPI
+* Python
+* SQLAlchemy
+* SQLite
+* JWT Authentication
 
-- Frontend: React.js, JavaScript, CSS, Vite
-- Backend: Python, FastAPI
-- Database: SQLite, SQLAlchemy
-- Authentication: JWT Authentication
-- AI Processing: Resume Parsing and NLP
-- Tools: Git, GitHub, VS Code
+AI Integration
 
-## Project Objective
+* Google Gemini AI
+* Resume Parsing
+* ATS Scoring
 
-The main objective of this project is to build an intelligent recruitment platform that reduces manual resume screening and helps recruiters identify suitable candidates while providing candidates with better job opportunities.
+DevOps
 
-## Future Scope
+* Docker
+* Docker Compose
+* GitHub Actions (CI)
+* Render Continuous Deployment (CD)
 
-- Cloud deployment
-- Advanced AI interview assistance
-- Real-time notifications
-- Improved recommendation system
+Docker
+
+The application is fully containerized using Docker with separate Docker images for the frontend and backend. Docker Compose is used to orchestrate both services, enabling a consistent development environment and simplified deployment.
+
+CI/CD Pipeline
+
+A GitHub Actions workflow automates the Continuous Integration process by installing dependencies, validating the React application build, and building Docker images for both frontend and backend. After successful validation, Render automatically deploys the latest version from the main branch, providing a complete Continuous Deployment pipeline.
+
+Authentication & Security
+
+* JWT-based Authentication
+* Role-Based Access Control
+* Protected Routes
+* Email OTP Verification
+
+Project Architecture
+
+* Candidate Portal
+* Recruiter Portal
+* React Frontend
+* FastAPI REST API
+* SQLite Database
+* Google Gemini AI Integration
+* Brevo Email Service
+
+Future Enhancements
+
+* Interview Scheduling
+* Resume Recommendation Engine
+* Real-time Notifications
+* Recruiter Analytics Dashboard
+* Cloud Database Integration
 
 ## How to Run the Project
 
