@@ -8,12 +8,6 @@ A full-stack recruitment platform that simplifies the hiring process through AI-
  **Application:** https://ai-job-portal-recruitment-system-1.onrender.com
 ---
 
-## **Overview**
-
-A full-stack recruitment platform that simplifies the hiring process through AI-powered resume analysis and role-based access for Candidates and Recruiters. The platform enables candidates to upload resumes, receive ATS scores, and apply for jobs, while recruiters can create job postings, review applications, and manage the recruitment process efficiently.
-
----
-
 ## **Key Features**
 
 - AI-powered resume analysis using Google Gemini AI
