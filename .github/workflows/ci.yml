@@ -1,0 +1,36 @@
+name: AI Resume Analyzer CI
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+jobs:
+
+  backend-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build Backend Docker Image
+        run: |
+          cd backend
+          docker build -t ai-resume-backend .
+
+  frontend-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build Frontend Docker Image
+        run: |
+          cd frontend
+          docker build -t ai-resume-frontend .
