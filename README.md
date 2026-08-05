@@ -8,7 +8,7 @@ A full-stack recruitment platform that simplifies the hiring process through AI-
  **Application:** https://ai-job-portal-recruitment-system-1.onrender.com
 ---
 
-## 🚀 Features
+## Features
 
 ### Candidate Features
 
@@ -33,7 +33,7 @@ A full-stack recruitment platform that simplifies the hiring process through AI-
 - Update application status
 
 ---
-## 📸 Screenshots
+## Screenshots
 
 ### Login Page
 ![Login](login.png)
