@@ -48,7 +48,41 @@ A full-stack recruitment platform that simplifies the hiring process through AI-
 ![Recruiter Dashboard](recruiter-dashboard.png)
 
 ## 📂 Project Structure
+
+```text
 AI_Resume_Analyzer/
+│
+├── .github/
+│   └── workflows/
+│       └── ci.yml
+│
+├── backend/
+│   ├── routes/
+│   │   ├── auth.py
+│   │   ├── resume.py
+│   │   ├── analysis.py
+│   │   ├── users.py
+│   │   ├── jobs.py
+│   │   └── applications.py
+│   │
+│   ├── utils/
+│   │   ├── gemini_ai.py
+│   │   ├── email_service.py
+│   │   ├── pdf_reader.py
+│   │   ├── job_matcher.py
+│   │   ├── auth_utils.py
+│   │   ├── helper.py
+│   │   └── skill_extractor.py
+│   │
+│   ├── main.py
+│   ├── models.py
+│   ├── schemas.py
+│   ├── database.py
+│   ├── ai_analysis.py
+│   ├── resume_parser.py
+│   ├── ats_score.py
+│   ├── requirements.txt
+│   └── Dockerfile
 │
 ├── frontend/
 │   ├── src/
@@ -73,55 +107,20 @@ AI_Resume_Analyzer/
 │   │   │
 │   │   ├── App.jsx
 │   │   ├── App.css
-│   │   ├── main.jsx
-│   │   └── index.css
+│   │   ├── index.css
+│   │   └── main.jsx
 │   │
 │   ├── Dockerfile
 │   ├── package.json
-│   ├── vite.config.js
-│   └── index.html
-│
-├── backend/
-│   ├── routes/
-│   │   ├── auth.py
-│   │   ├── resume.py
-│   │   ├── analysis.py
-│   │   ├── users.py
-│   │   ├── jobs.py
-│   │   └── applications.py
-│   │
-│   ├── utils/
-│   │   ├── gemini_ai.py
-│   │   ├── email_service.py
-│   │   ├── resume_parser.py
-│   │   ├── ats_score.py
-│   │   ├── job_matcher.py
-│   │   └── auth_utils.py
-│   │
-│   ├── main.py
-│   ├── models.py
-│   ├── schemas.py
-│   ├── database.py
-│   ├── ai_analysis.py
-│   ├── resume_parser.py
-│   ├── ats_score.py
-│   ├── requirements.txt
-│   └── Dockerfile
-│
-├── .github/
-│   └── workflows/
-│       └── ci.yml
+│   ├── package-lock.json
+│   └── vite.config.js
 │
 ├── docker-compose.yml
 │
-├── screenshots/
-│   ├── login.png
-│   ├── resume-upload.png
-│   ├── ats-score.png
-│   └── recruiter-dashboard.png
+├── .gitignore
 │
-├── README.md
-└── .gitignore
+└── README.md
+```
 
 ## **Technology Stack**
 
