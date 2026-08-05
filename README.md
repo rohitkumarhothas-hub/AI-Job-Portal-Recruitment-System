@@ -39,13 +39,13 @@ A full-stack recruitment platform that simplifies the hiring process through AI-
 ![Login](login.png)
 
 ### Candidate Dashboard
-![Dashboard](screenshots/dashboard.png)
+![Dashboard](dashboard.png)
 
 ### ATS Score
-![ATS Score](screenshots/ats-score.png)
+![ATS Score](ats-score.png)
 
 ### Recruiter Dashboard
-![Recruiter Dashboard](screenshots/recruiter-dashboard.png)
+![Recruiter Dashboard](recruiter-dashboard.png)
 
 ## **Technology Stack**
 
