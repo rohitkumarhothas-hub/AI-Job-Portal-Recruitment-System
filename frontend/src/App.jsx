@@ -28,7 +28,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 
 
 
-function App( {
+function App() {
 
 
   return (
