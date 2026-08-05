@@ -154,16 +154,43 @@ AI_Resume_Analyzer/
 - Render Continuous Deployment (CD)
 
 ---
+## 🐳 Docker Setup
 
-## **Docker**
+The application is containerized using Docker with separate containers for the frontend and backend services. Docker Compose is used to manage and run the complete full-stack application environment.
 
-The application is fully containerized using Docker with separate Docker images for the frontend and backend. Docker Compose is used to orchestrate both services, enabling a consistent development environment and simplified deployment.
+### Build and Run the Application
 
----
+```bash
+docker-compose up --build
+```
 
-## **CI/CD Pipeline**
+This will start:
 
-A GitHub Actions workflow automates the Continuous Integration process by installing dependencies, validating the React application build, and building Docker images for both frontend and backend. After successful validation, Render automatically deploys the latest version from the **main** branch, providing a complete Continuous Deployment pipeline.
+- React.js frontend container
+- FastAPI backend container
+
+### Stop the Application
+
+```bash
+docker-compose down
+```
+
+### Docker Services
+
+| Service | Technology | Description |
+|---------|------------|-------------|
+| Frontend | React + Vite | User interface and client-side application |
+| Backend | FastAPI | REST API and AI processing services |
+| Database | SQLite | Application data storage |
+
+## 🔄 CI/CD Pipeline
+
+Implemented GitHub Actions for Continuous Integration.
+
+- Automatically validates code changes on every push.
+- Builds frontend and backend applications.
+- Builds Docker images for deployment.
+- Render automatically deploys the latest version from the main branch.
 
 ---
 ##  Deployment
@@ -205,43 +232,7 @@ https://ai-job-portal-recruitment-system-1.onrender.com
 - Brevo Email Service
 
 ---
-## 🐳 Docker Setup
 
-The application is containerized using Docker with separate containers for the frontend and backend services. Docker Compose is used to manage and run the complete full-stack application environment.
-
-### Build and Run the Application
-
-```bash
-docker-compose up --build
-```
-
-This will start:
-
-- React.js frontend container
-- FastAPI backend container
-
-### Stop the Application
-
-```bash
-docker-compose down
-```
-
-### Docker Services
-
-| Service | Technology | Description |
-|---------|------------|-------------|
-| Frontend | React + Vite | User interface and client-side application |
-| Backend | FastAPI | REST API and AI processing services |
-| Database | SQLite | Application data storage |
-
-## 🔄 CI/CD Pipeline
-
-Implemented GitHub Actions for Continuous Integration.
-
-- Automatically validates code changes on every push.
-- Builds frontend and backend applications.
-- Builds Docker images for deployment.
-- Render automatically deploys the latest version from the main branch.
 
 ## **Future Enhancements**
 
