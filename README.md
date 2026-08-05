@@ -8,19 +8,44 @@ A full-stack recruitment platform that simplifies the hiring process through AI-
  **Application:** https://ai-job-portal-recruitment-system-1.onrender.com
 ---
 
-## **Key Features**
+## 🚀 Features
 
-- AI-powered resume analysis using Google Gemini AI
-- ATS score generation and resume evaluation
-- Role-based Candidate and Recruiter portals
-- Resume upload and parsing
-- Job posting and application management
-- Recruiter application review and candidate shortlisting
-- Secure JWT authentication
-- Email OTP verification using Brevo
-- Protected routes based on user roles
+### Candidate Features
+
+- User registration and login with JWT authentication
+
+- Upload resume (PDF)
+
+- AI-based resume analysis
+
+- ATS score calculation
+
+- Job search and application
+
+### Recruiter Features
+
+- Recruiter dashboard
+
+- Create and manage job postings
+
+- View candidate applications
+
+- Update application status
 
 ---
+## 📸 Screenshots
+
+### Login Page
+![Login](screenshots/login.png)
+
+### Candidate Dashboard
+![Dashboard](screenshots/dashboard.png)
+
+### ATS Score
+![ATS Score](screenshots/ats-score.png)
+
+### Recruiter Dashboard
+![Recruiter Dashboard](screenshots/recruiter-dashboard.png)
 
 ## **Technology Stack**
 
